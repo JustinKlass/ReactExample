@@ -1,47 +1,66 @@
+import React, { useState, useEffect } from 'react';
 import {Bar} from 'react-chartjs-2';
+import Axios from 'axios';
+import moment from 'moment';
 
-const BarChart = (data) => {
-    console.log(data.cases[0].newCases)
-    return (
-        <div>
-            <Bar 
-                data={{
-                    labels: [data.cases[0].date, data.cases[1].date, data.cases[2].date, data.cases[3].date, data.cases[4].date, data.cases[5].date, data.cases[6].date],
-                    datasets: [{
-                        label: "# of New Cases in the U.K.",
-                        data: [data.cases[0].newCases, data.cases[1].newCases, data.cases[2].newCases, data.cases[3].newCases, data.cases[4].newCases, data.cases[5].newCases, data.cases[6].newCases],
-                        backgroundColor: ['rgba(255, 99, 132, 0.2)',
+const url = 'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure={"date":"date","newCases":"newCasesByPublishDate"}'
+
+const BarChart = () => {
+    const [barData, setBarData] = useState({})
+    // const [latestWeek, setLatestWeek] = useState([]);
+    // console.log(labels)
+    const getData = () => {
+        let weekDates = [];
+        let caseNums = ["1", "2", "3", "4", "5", "6", "7"];
+        Axios.get(url).then((response) => {
+            console.log(response.data);
+            const week = response.data.data.slice(0, 7);
+            // console.log(week)
+            weekDates = week.map(day => moment(day.date).format("l"))
+            caseNums = week.map(day => day.newCases)
+            console.log(weekDates)
+            setBarData({
+                labels: weekDates,
+                datasets: [
+                  {
+                    label: "# of New Cases in the U.K.",
+                    data: caseNums,
+                    borderWidth: 4,
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)',
                         'rgba(255, 159, 64, 0.2)',
                         'rgba(255, 205, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(153, 102, 255, 0.2)',
                         'rgba(201, 203, 207, 0.2)'],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(201, 203, 207)'
+                    ],
+                    
+                  }
+                ]
+              }
+            )
+    
+          }).catch((error) => {
+            console.log(error)
+          })
+    }
 
-                        borderColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(255, 159, 64)',
-                            'rgb(255, 205, 86)',
-                            'rgb(75, 192, 192)',
-                            'rgb(54, 162, 235)',
-                            'rgb(153, 102, 255)',
-                            'rgb(201, 203, 207)'
-                        ],
-                        borderWidth: 1
-                      }],
-                }}
-                height={400}
-                width={600}
-                options={{
-                    maintainAspectRatio: false,
-                    scales: {
-                        yAxes: [
-                            {ticks: {
-                                beginAtZero: true
-                            }}
-                        ]
-                    }
-                }}
+    useEffect(() => {
+        getData()
+    }, [])
+
+    return (
+        <div style={{height: '500px', width: '500px'}}>
+            <Bar 
+                data={barData} options={{responsive: true}}
             />
         </div>
     )

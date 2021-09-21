@@ -1,27 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+// import Axios from 'axios';
+import Header from './components/Header'
 import BarChart from './components/BarChart';
-import Axios from 'axios';
+
+
+// const url = 'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure={"date":"date","newCases":"newCasesByPublishDate"}'
+
 
 function App() {
-  const [data, setData] = useState("");
 
-  const getStatistics = () => {
-    Axios.get(    'https://api.coronavirus.data.gov.uk/v1/data?' +
-    'filters=areaType=overview&' +
-    'structure={"date":"date","newCases":"newCasesByPublishDate"}').then((response) => {
-      // setData("50");
-      setData(response.data.data);
-      console.log(response);
-    })
-  }
+  // const [labels, setLabels] = useState("");
+  // useEffect(() => {
+  //   Axios.get(url).then((response) => {
+  //     console.log(response);
+  //     const week = response.data.data.slice(0, 7);
+  //     console.log(week)
+  
+  //     setLabels(week.map(day => day.date));
+  //   })
+  // }, [])
+
 
   return (
     <div className="container">
-      <div>
-        <BarChart cases={data}/>
-      </div>
-      <button onClick={getStatistics}>TEST</button>
-
+      <Header />
+      <BarChart />
+      {/* <BarChart cases={labels}/> */}
     </div>
   );
 }
