@@ -1,18 +1,25 @@
-// import Header from "./components/Header"
-import Axios from "axios";
+import React, { useState } from 'react';
+import BarChart from './components/BarChart';
+import Axios from 'axios';
 
 function App() {
+  const [data, setData] = useState("");
 
   const getStatistics = () => {
-    Axios.get("https://api.coronavirus.data.gov.uk/v1/data").then((response) => {
-      console.log(response)
+    Axios.get(    'https://api.coronavirus.data.gov.uk/v1/data?' +
+    'filters=areaType=overview&' +
+    'structure={"date":"date","newCases":"newCasesByPublishDate"}').then((response) => {
+      // setData("50");
+      setData(response.data.data);
+      console.log(response);
     })
   }
 
   return (
     <div className="container">
-      <h1>Hello World
-      </h1>
+      <div>
+        <BarChart cases={data}/>
+      </div>
       <button onClick={getStatistics}>TEST</button>
 
     </div>
