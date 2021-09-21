@@ -2,7 +2,7 @@ const Header = () => {
 
     return (
         <header>
-            <h1>Covid-19 in the U.K.</h1>
+            <section>Covid-19 in the U.K.</section>
         </header>
     )
 }
