@@ -7,23 +7,23 @@ const url = 'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overvi
 
 const BarChart = () => {
     const [barData, setBarData] = useState({})
-    // const [latestWeek, setLatestWeek] = useState([]);
-    // console.log(labels)
     const getData = () => {
         let weekDates = [];
-        let caseNums = ["1", "2", "3", "4", "5", "6", "7"];
+        let caseNums = [];
         Axios.get(url).then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
+
             const week = response.data.data.slice(0, 7);
-            // console.log(week)
+
             weekDates = week.map(day => moment(day.date).format("l"))
             caseNums = week.map(day => day.newCases)
             console.log(weekDates)
+
             setBarData({
                 labels: weekDates,
                 datasets: [
                   {
-                    label: "# of New Cases in the U.K.",
+                    label: "# of New Cases in the U.K. in the past week",
                     data: caseNums,
                     borderWidth: 4,
                     backgroundColor: ['rgba(255, 99, 132, 0.2)',
@@ -49,7 +49,7 @@ const BarChart = () => {
             )
     
           }).catch((error) => {
-            console.log(error)
+            console.log(error);
           })
     }
 
@@ -58,7 +58,7 @@ const BarChart = () => {
     }, [])
 
     return (
-        <div style={{height: '500px', width: '500px'}}>
+        <div style={{height: '1100px', width: '1100px'}}>
             <Bar 
                 data={barData} options={{responsive: true}}
             />
