@@ -1,8 +1,5 @@
 .rowDiv {
     display:flex;
-    margin-top: 10%;
-}
-
-.statsContainer {
-padding-left: 4%;
+    margin-top: 3%;
+    /* border-top: 2px solid black; */
 }
