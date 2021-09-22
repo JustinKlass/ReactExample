@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Bar} from 'react-chartjs-2';
-import BarChart from '../../components/BarChart';
+import BarChart from '../../components/BarChart/BarChart';
 
 const England = () => {
     // const englandData = 'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure={"date":"date","newCases":"newCasesByPublishDate"}';

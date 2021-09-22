@@ -28,7 +28,7 @@ const BarChart = (props) => {
                     borderWidth: 4,
                     backgroundColor: ['rgba(18,46,78, 0.7)'],
                     borderColor: [
-                        '#122e4e'
+                        '#122E4E'
                     ],
                     
                   }
@@ -46,7 +46,7 @@ const BarChart = (props) => {
       }, [])
 
     return (
-        <div style={{height: '700px', width: '50%'}}>
+        <div className='barChartContainer'style={{height: '600px', width: '55%'}}>
             <Bar 
                 data={barData} options={{responsive: true}}
             />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import BarChart from '../../components/BarChart';
+import BarChart from '../../components/BarChart/BarChart';
 
 const Scotland = () => {
     const [scotlandDataUrl, setScotlandDataUrl] = useState('https://api.coronavirus.data.gov.uk/v1/data?' +
