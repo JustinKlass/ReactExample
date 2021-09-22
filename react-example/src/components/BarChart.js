@@ -6,7 +6,7 @@ import moment from 'moment';
 const BarChart = (props) => {
     const [barData, setBarData] = useState({});
     const getData = () => {
-      console.log(props)
+      // console.log(props)
 
         let weekDates = [];
         let caseNums = [];
@@ -17,7 +17,7 @@ const BarChart = (props) => {
 
             weekDates = week.map(day => moment(day.date).format("l"))
             caseNums = week.map(day => day.newCases)
-            console.log(weekDates)
+            // console.log(weekDates);
 
             setBarData({
                 labels: weekDates,
@@ -41,9 +41,9 @@ const BarChart = (props) => {
           })
     }
 
-    useEffect(() => {
-        getData()
-    }, [])
+      useEffect(() => {
+          getData()
+      }, [])
 
     return (
         <div style={{height: '700px', width: '50%'}}>

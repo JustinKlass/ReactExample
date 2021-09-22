@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import BarChart from '../../components/BarChart';
+
 const Scotland = () => {
+    const [scotlandDataUrl, setScotlandDataUrl] = useState('https://api.coronavirus.data.gov.uk/v1/data?' +
+                                                   'filters=areaType=nation;areaName=scotland&' +
+                                                   'structure={"date":"date","newCases":"newCasesByPublishDate"}');
     return(
         <div className='container'>
-
-            <h1 className='text-center' style={{paddingTop: '30%'}}>Scotland</h1>
+            <BarChart url={scotlandDataUrl}/>
         </div>
     )
 }
