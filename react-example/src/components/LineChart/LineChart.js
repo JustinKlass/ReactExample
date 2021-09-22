@@ -44,7 +44,7 @@ const LineChart = (props) => {
       }, [])
 
     return (
-        <div style={{height: '600px', width: '65%', marginTop: '1em', borderTop: '0.15em solid black'}}>
+        <div style={{height: '600px', width: '65%', marginTop: '1em', borderTop: '0.15em solid black', marginLeft: '5%'}}>
         <Line
         style={{marginTop: '1em'}}
           data={lineData}
