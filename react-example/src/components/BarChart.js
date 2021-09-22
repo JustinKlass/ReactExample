@@ -3,14 +3,14 @@ import {Bar} from 'react-chartjs-2';
 import Axios from 'axios';
 import moment from 'moment';
 
-const url = 'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&structure={"date":"date","newCases":"newCasesByPublishDate"}'
-
-const BarChart = () => {
-    const [barData, setBarData] = useState({})
+const BarChart = (props) => {
+    const [barData, setBarData] = useState({});
     const getData = () => {
+      console.log(props)
+
         let weekDates = [];
         let caseNums = [];
-        Axios.get(url).then((response) => {
+        Axios.get(props.url).then((response) => {
             console.log(response.data);
 
             const week = response.data.data.slice(0, 7);
@@ -46,10 +46,11 @@ const BarChart = () => {
     }, [])
 
     return (
-        <div style={{height: '1100px', width: '1100px'}}>
+        <div style={{height: '700px', width: '50%'}}>
             <Bar 
                 data={barData} options={{responsive: true}}
             />
+            {/* <h1>{props.url}</h1> */}
         </div>
     )
 }
