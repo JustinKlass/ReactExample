@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Line} from 'react-chartjs-2';
 import Axios from 'axios';
-import moment from 'moment';
 import './Statistics.css'
 
 const Statistics = (props) => {
@@ -9,6 +7,9 @@ const Statistics = (props) => {
     const [totalDeaths, setTotalDeaths] = useState({});
     const getData = () => {
         Axios.get(props.url).then((response) => {
+            // console.log(response.data.data)
+            // console.log(response.data.data[0].cumCasesByPublishDate)
+            // console.log(response.data.data[0].cumDeaths28DaysByPublishDate)
             setTotalCases(response.data.data[0].cumCasesByPublishDate);
             setTotalDeaths(response.data.data[0].cumDeaths28DaysByPublishDate);
 

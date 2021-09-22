@@ -47,6 +47,17 @@ const Navbar = () => {
                         </NavLink>
                     </li>
 
+                    <li className='nav-item '>
+                        <NavLink className='nav-link' to='/Wales' exact>
+                            <i className='fas fa-tachometer-alt'></i>Wales
+                        </NavLink>
+                    </li>
+                    <li className='nav-item '>
+                        <NavLink className='nav-link' to='/NorthernIreland' exact>
+                            <i className='fas fa-tachometer-alt'></i>Northern Ireland
+                        </NavLink>
+                    </li>
+
                 </ul>
             </div>
         </nav>
