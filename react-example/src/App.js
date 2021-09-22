@@ -5,7 +5,7 @@ import {
   Switch
 } from 'react-router-dom'
 
-
+import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navbar'
 
 import Wales from './pages/Wales/Wales'
@@ -21,10 +21,9 @@ const App = () => {
       <Navbar />
       <main>
         <Switch>
+          
           <Route path='/' exact>
-
-              <UnitedKingdom />
-
+            <UnitedKingdom />
           </Route>
 
           <Route path='/England' exact>
@@ -46,6 +45,7 @@ const App = () => {
           <Redirect to='/' />
         </Switch>
       </main>
+      <Footer />
     </Router>
   );
 }

@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header'
 import LineChart from '../../components/LineChart/LineChart';
 import Statistics from '../../components/Statistics/Statistics';
 
+import './Wales.css'
 const Wales = () => {
    
     const [walesDataUrl, setWalesDataUrl] = useState('https://api.coronavirus.data.gov.uk/v1/data?' +
@@ -10,14 +11,17 @@ const Wales = () => {
                                                    'structure={"date":"date","newCases":"newCasesByPublishDate","cumCasesByPublishDate": "cumCasesByPublishDate", "cumDeaths28DaysByPublishDate": "cumDeaths28DaysByPublishDate"}');
 
     return(
-        <div className='container'>
-            <Header />
+        <div id='container'>
+            <Header area={'Wales'}/>
 
             <div className='rowDiv'>
-                <LineChart url={walesDataUrl} name={"Wales"}/>
+                <LineChart url={walesDataUrl} name={'Wales'}/>
                 <Statistics url={walesDataUrl}/>
             </div>
-    </div>
+            {/* <div className='footer'>
+
+            </div> */}
+        </div>
     )
 }
 

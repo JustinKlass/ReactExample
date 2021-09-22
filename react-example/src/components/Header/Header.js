@@ -1,10 +1,10 @@
 import './Header.css'
 
-const Header = () => {
+const Header = ( props ) => {
 
     return (
         <div className='header'>
-            <h1>Covid-19 in the U.K.</h1>
+            <h1>Covid-19 in the {props.area}</h1>
         </div>
     )
 }

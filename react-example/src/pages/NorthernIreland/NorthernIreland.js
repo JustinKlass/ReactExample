@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './NorthernIreland'
 import Header from '../../components/Header/Header'
 import LineChart from '../../components/LineChart/LineChart';
 import Statistics from '../../components/Statistics/Statistics';
@@ -10,11 +11,11 @@ const NorthernIreland = () => {
                                                    'structure={"date":"date","newCases":"newCasesByPublishDate","cumCasesByPublishDate": "cumCasesByPublishDate", "cumDeaths28DaysByPublishDate": "cumDeaths28DaysByPublishDate"}');
 
     return(
-        <div className='container'>
-            <Header />
+        <div id='container'>
+            <Header area={"Northern Ireland"}/>
 
             <div className='rowDiv'>
-                <LineChart url={NIDataUrl} name={"Northern Ireland"}/>
+                <LineChart url={NIDataUrl} name={'Northern Ireland'}/>
                 <Statistics url={NIDataUrl}/>
             </div>
     </div>
